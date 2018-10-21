@@ -1,49 +1,44 @@
-create table application(
-application_id int primary key auto_increment,
-full_name varchar2(20), 
-date_of_birth date, 
-highest_qualification varchar2(10), 
-marks_obtained (number),
-goals varchar2(20),
-email_ id varchar2(20), 
-Scheduled_program_id int, 
-status varchar2(10),
-date_Of_interview date);
-
-create table programs_offered(
-program_name varchar2(5), 
-description varchar2(20), 
-applicant_eligibility varchar2(40) , 
-duration (number), 
-degree_certificate_offered varchar2(10));
-
-create table location(
-location_id int primary key,
-addressLine1 varchar2(10),
-addressLine2 varchar2(10),
-city varchar2(10),
-state varchar2(10),
-pincode varchar2(6)
-);
+create table application( application_id int primary key auto_increment, full_name varchar(20), date_of_birth date, highest_qualification varchar(10), marks_obtained int, goals varchar(20), email_id varchar(20), Scheduled_program_id int, status varchar(10), date_Of_interview date);
 
 create table programs_scheduled(
 scheduled_program_id int,
-program_name varchar2(5), 
+program_name varchar(5), 
 Location_id int references Location(location_id), 
 start_date date, 
 end_date date,
-sessions_per_week number
+sessions_per_week int
+);
+
+
+create table programs_offered(
+program_name varchar(5), 
+description varchar(20), 
+applicant_eligibility varchar(40) , 
+duration int, 
+degree_certificate_offered varchar(10));
+
+create table location(
+location_id int primary key auto_increment,
+addressLine1 varchar(40),
+addressLine2 varchar(40),
+city varchar(15),
+state varchar(20),
+pincode varchar(6)
 );
 
 create table participant(
 roll_no int, 
-email_id varchar2(20),
+email_id varchar(20),
 Application_id int references application(application_id), 
 Scheduled_program_id int
 );
 
+
 create table users(
 login_id int, 
-password varchar2(10), 
-role varchar2(5)
+password varchar(10), 
+role varchar(5)
 );
+
+insert into location();
+insert into programs_scheduled values();
