@@ -1,44 +1,58 @@
-create table application( application_id int primary key auto_increment, full_name varchar(20), date_of_birth date, highest_qualification varchar(10), marks_obtained int, goals varchar(20), email_id varchar(20), Scheduled_program_id int, status varchar(10), date_Of_interview date);
+create table application( application_id int primary key auto_increment, 
+	full_name varchar(20), 
+	date_of_birth date,
+	highest_qualification varchar(10), 
+	marks_obtained int, 
+	goals varchar(20), 
+	email_id varchar(20), 
+	Scheduled_program_id int, 
+	status varchar(10), 
+	date_Of_interview date);
 
 create table programs_scheduled(
-scheduled_program_id int,
-program_name varchar(5), 
-Location_id int references Location(location_id), 
-start_date date, 
-end_date date,
-sessions_per_week int
-);
+	scheduled_program_id int,
+	program_name varchar(5), 
+	Location_id int references Location(location_id), 
+	start_date date, 
+	end_date date,
+	sessions_per_week int);
 
 
 create table programs_offered(
-program_name varchar(5), 
-description varchar(20), 
-applicant_eligibility varchar(40) , 
-duration int, 
-degree_certificate_offered varchar(10));
+	program_name varchar(5), 
+	description varchar(20), 
+	applicant_eligibility varchar(40) , 
+	duration int, 
+	degree_certificate_offered varchar(10));
+	
+insert into programs_scheduled values("CSE","Computer Science and Engg","70% marks in intermediate",4,"UG certificate");
+insert into programs_scheduled values("ECE","Electronics and Comm","70% marks in intermediate",4,"UG certificate");
+insert into programs_scheduled values("ICE","Instrumentation and Control Engg","70% marks in intermediate",4,"UG certificate");
+insert into programs_scheduled values("CHE","Chemical Engg","70% marks in intermediate",4,"UG certificate");
+insert into programs_scheduled values("MECH","Mechanical Engg","70% marks in intermediate",4,"UG certificate");
 
 create table location(
-location_id int primary key auto_increment,
-addressLine1 varchar(40),
-addressLine2 varchar(40),
-city varchar(15),
-state varchar(20),
-pincode varchar(6)
-);
+	location_id int primary key auto_increment,
+	addressLine1 varchar(40),
+	addressLine2 varchar(40),
+	city varchar(15),
+	state varchar(20),
+	pincode varchar(6));
+	
+	alter table location auto_increment=101;
 
 create table participant(
-roll_no int, 
-email_id varchar(20),
-Application_id int references application(application_id), 
-Scheduled_program_id int
-);
-
+	roll_no int, 
+	email_id varchar(20),
+	Application_id int references application(application_id), 
+	Scheduled_program_id int);
 
 create table users(
-login_id int, 
-password varchar(10), 
-role varchar(5)
-);
+	login_id int, 
+	password varchar(10), 
+	role varchar(5));
+	
+insert into table users values(10001,"root","MAC");
+insert into table users values(10002,"root","ADMIN");
 
 insert into location();
-insert into programs_scheduled values();
