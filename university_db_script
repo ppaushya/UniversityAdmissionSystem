@@ -16,6 +16,8 @@ create table programs_offered(
 	duration int, 
 	degree_certificate_offered varchar(40));
 	
+	
+	
 insert into programs_offered values("CSE","Computer Science and Engg","70% marks in intermediate",4,"UG certificate");
 insert into programs_offered values("ECE","Electronics and Comm","70% marks in intermediate",4,"UG certificate");
 insert into programs_offered values("ICE","Instrumentation and Control Engg","70% marks in intermediate",4,"UG certificate");
@@ -24,11 +26,12 @@ insert into programs_offered values("MECH","Mechanical Engg","70% marks in inter
 
 create table programs_scheduled(
 	scheduled_program_id int,
-	program_name varchar(5) unique references programs_offered(program_name) ON DELETE CASCADE, 
+	program_name varchar(5) unique, 
 	location varchar(100), 
 	start_date date, 
 	end_date date,
 	sessions_per_week int);
+	alter table programs_scheduled add foreign key(program_name) references programs_offered(program_name) on delete cascade;
 	
 insert into programs_scheduled values(1001,"CSE","Mumbai","2018-12-01","2022-05-10",4);
 insert into programs_scheduled values(1002,"ECE","Bangalore","2018-12-02","2022-05-11",4);
